@@ -311,12 +311,12 @@ odoo.define('web_responsive', function (require) {
          * @return jQuery obj
          */
         searchMenus: function () {
-            if (this.$searchInput.val().length > 4) {
+            if (this.$searchInput.val().length > 5) {
                 this.$searchInput = $('#appDrawerSearchInput').focus();
-                var Menus = new DataModel('res.partner');
-                Menus.query(['name', 'id'])
-                    .filter([['name', 'ilike', this.$searchInput.val()],
-                        ['customer', '=', true]
+                var Menus = new DataModel('spa.contract');
+                Menus.query(['contract_partner_name', 'id', 'contact_id'])
+                    .filter([['contract_partner_name', 'ilike', this.$searchInput.val()],
+                        ['to_renew', '=', true], ['state', 'not in', ['cancelled', 'close']]
                     ])
                     .all()
                     .then($.proxy(this.showFoundMenus, this));
