@@ -24,8 +24,8 @@ odoo.define('web.web_ir_actions_act_window_message', function(require)
                     text: action.close_button_title || _t('Close'),
                     click: function() {
                         // refresh the view before closing the dialog
-                        // self.inner_widget.active_view
-                        //   .controller.recursive_reload();
+                        self.inner_widget.active_view
+                            .controller.recursive_reload();
                         dialog.close()
                     },
                     classes: 'btn-default',
