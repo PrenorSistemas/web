@@ -30,11 +30,12 @@ addon | version | summary
 [web_decimal_numpad_dot](web_decimal_numpad_dot/) | 10.0.1.1.0 | Allows using numpad dot to enter period decimal separator
 [web_dialog_size](web_dialog_size/) | 10.0.1.0.2 | A module that lets the user expand a dialog box to the full screen width.
 [web_domain_field](web_domain_field/) | 10.0.1.0.0 | Use computed field as domain
-[web_drop_target](web_drop_target/) | 10.0.1.0.0 | Allows to drag files into Odoo
+[web_drop_target](web_drop_target/) | 10.0.1.1.0 | Allows to drag files into Odoo
 [web_editor_background_color](web_editor_background_color/) | 10.0.1.0.0 | Set any background color for web editor snippets
 [web_environment_ribbon](web_environment_ribbon/) | 10.0.1.0.0 | Web Environment Ribbon
 [web_export_view](web_export_view/) | 10.0.1.0.0 | Web Export Current View
 [web_favicon](web_favicon/) | 10.0.1.0.0 | Allows to set a custom shortcut icon (aka favicon)
+[web_fullscreen](web_fullscreen/) | 10.0.1.0.0 | Adds a fullscreen mode button
 [web_hide_db_manager_link](web_hide_db_manager_link/) | 10.0.1.0.0 | Hide link to database manager in login screen
 [web_ir_actions_act_window_message](web_ir_actions_act_window_message/) | 10.0.1.0.0 | Show a message box to users
 [web_ir_actions_act_window_page](web_ir_actions_act_window_page/) | 10.0.1.0.0 | Allows a developer to trigger a pager to show the previous or next next record in the form view
@@ -52,7 +53,7 @@ addon | version | summary
 [web_send_message_popup](web_send_message_popup/) | 10.0.1.0.0 | Web Send Message as Popup
 [web_sheet_full_width](web_sheet_full_width/) | 10.0.1.0.1 | Use the whole available screen width when displaying sheets
 [web_shortcut](web_shortcut/) | 10.0.1.0.1 | Shortcut Menu
-[web_switch_company_warning](web_switch_company_warning/) | 10.0.0.1.0 | Show a warning if current company has been switched in another tab or window.
+[web_switch_company_warning](web_switch_company_warning/) | 10.0.0.1.1 | Show a warning if current company has been switched in another tab or window.
 [web_timeline](web_timeline/) | 10.0.1.2.1 | Interactive visualization chart to show events in time
 [web_translate_dialog](web_translate_dialog/) | 10.0.1.0.1 | Easy-to-use pop-up to translate fields in several languages
 [web_tree_dynamic_colored_field](web_tree_dynamic_colored_field/) | 10.0.1.0.0 | Allows you to dynamically color fields on tree views
