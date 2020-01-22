@@ -19,6 +19,9 @@ class ExcelExportView(ExcelExport):
 
     @http.route('/web/export/xls_view', type='http', auth='user')
     def export_xls_view(self, data, token):
+        # Usuario NRECIO
+        if request.uid == 787:
+            return request.not_found()
         data = json.loads(data)
         model = data.get('model', [])
         columns_headers = data.get('headers', [])
