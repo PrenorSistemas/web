@@ -1,7 +1,7 @@
 /* Copyright 2016 LasLabs Inc.
  * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
 
-odoo.define('web_responsive', function (require) {
+odoo.define('web_responsive', function(require) {
     'use strict';
 
     var Menu = require('web.Menu');
@@ -16,14 +16,14 @@ odoo.define('web_responsive', function (require) {
     Menu.include({
 
         // Force all_outside to prevent app icons from going into more menu
-        reflow: function () {
+        reflow: function() {
             this._super('all_outside');
         },
 
         /* Overload to collapse unwanted visible submenus
          * @param allow_open bool Switch to allow submenus to be opened
          */
-        open_menu: function (id, allowOpen) {
+        open_menu: function(id, allowOpen) {
             this._super(id);
             if (allowOpen) return;
             var $clicked_menu = this.$secondary_menus.find('a[data-menu=' + id + ']');
@@ -42,7 +42,7 @@ odoo.define('web_responsive', function (require) {
         },
 
         // It prevents focusing of search el on mobile
-        preventMobileFocus: function (event) {
+        preventMobileFocus: function(event) {
             if (this.isMobile()) {
                 event.preventDefault();
             }
@@ -50,7 +50,7 @@ odoo.define('web_responsive', function (require) {
 
         // For lack of Modernizr, TouchEvent will do
         isMobile: function () {
-            try {
+            try{
                 document.createEvent('TouchEvent');
                 return true;
             } catch (ex) {
@@ -97,7 +97,7 @@ odoo.define('web_responsive', function (require) {
         initialized: false,
         searching: false,
 
-        init: function () {
+        init: function() {
 
             this.directionCodes = {
                 'left': this.LEFT,
@@ -116,11 +116,11 @@ odoo.define('web_responsive', function (require) {
             this.initDrawer();
             this.handleWindowResize();
             var $clickZones = $('.odoo_webclient_container, ' +
-                'a.oe_menu_leaf, ' +
-                'a.oe_menu_toggler, ' +
-                'a.oe_logo, ' +
-                'i.oe_logo_edit'
-            );
+                                'a.oe_menu_leaf, ' +
+                                'a.oe_menu_toggler, ' +
+                                'a.oe_logo, ' +
+                                'i.oe_logo_edit'
+                                );
 
             $clickZones.click($.proxy(this.handleClickZones, this));
 
@@ -140,7 +140,7 @@ odoo.define('web_responsive', function (require) {
         },
 
         // Provides initialization handlers for Drawer
-        initDrawer: function () {
+        initDrawer: function() {
             this.$el = $('.drawer');
             this.$el.drawer();
             this.$el.one('drawer.opened', $.proxy(this.onDrawerOpen, this));
@@ -148,9 +148,9 @@ odoo.define('web_responsive', function (require) {
             // You should be able to pass these to ``.drawer``, but scroll freezes.
             this.$el.on(
                 'drawer.opened',
-                function setIScrollProbes() {
+                function setIScrollProbes(){
                     var onIScroll = $.proxy(
-                        function () {
+                        function() {
                             this.iScroll.refresh();
                         },
                         this
@@ -169,7 +169,7 @@ odoo.define('web_responsive', function (require) {
         },
 
         // Provides handlers to hide drawer when "unfocused"
-        handleClickZones: function () {
+        handleClickZones: function() {
             this.$el.drawer('close');
             $('.o_sub_menu_content')
                 .parent()
@@ -178,7 +178,7 @@ odoo.define('web_responsive', function (require) {
         },
 
         // Resizes bootstrap dropdowns for screen
-        handleWindowResize: function () {
+        handleWindowResize: function() {
             $('.dropdown-scrollable').css(
                 'max-height', $(window).height() * this.dropdownHeightFactor
             );
@@ -191,8 +191,8 @@ odoo.define('web_responsive', function (require) {
          *
          * @param e The ``keydown`` event triggered by ``core.bus``.
          */
-        handleKeyDown: function (e) {
-            if (!this.isOpen) {
+        handleKeyDown: function(e) {
+            if (!this.isOpen){
                 return;
             }
             var directionCode = $.hotkeys.specialKeys[e.keyCode.toString()];
@@ -231,9 +231,9 @@ odoo.define('web_responsive', function (require) {
          *
          * @param e The key event that was triggered by ``core.bus``.
          */
-        redirectKeyPresses: function (e) {
+        redirectKeyPresses: function(e) {
 
-            if (!this.isOpen) {
+            if ( !this.isOpen ) {
                 // Drawer isn't open; Ignore.
                 return;
             }
@@ -253,7 +253,7 @@ odoo.define('web_responsive', function (require) {
 
             // Event is already targeting the search input.
             // Perform search, then stop processing.
-            if (e.target === this.$searchInput[0]) {
+            if ( e.target === this.$searchInput[0] ) {
                 this.searchMenus();
                 return;
             }
@@ -276,7 +276,7 @@ odoo.define('web_responsive', function (require) {
          * @fires ``drawer.closed`` to the ``core.bus``
          * @listens ``drawer.opened`` and sends to onDrawerOpen
          */
-        onDrawerClose: function () {
+        onDrawerClose: function() {
             this.closeSearchMenus();
             this.$searchAction.hide();
             core.bus.trigger('drawer.closed');
@@ -290,7 +290,7 @@ odoo.define('web_responsive', function (require) {
          * @fires ``drawer.opened`` to the ``core.bus``
          * @listens ``drawer.closed`` and sends to :meth:``onDrawerClose``
          */
-        onDrawerOpen: function () {
+        onDrawerOpen: function() {
             this.$appLinks = $('.app-drawer-icon-app').parent();
             this.selectLink($(this.$appLinks[0]));
             this.$el.one('drawer.closed', $.proxy(this.onDrawerClose, this));
@@ -299,7 +299,7 @@ odoo.define('web_responsive', function (require) {
         },
 
         // Selects a link visibly & deselects others.
-        selectLink: function ($link) {
+        selectLink: function($link) {
             $('.web-responsive-focus').removeClass('web-responsive-focus');
             if ($link) {
                 $link.addClass('web-responsive-focus');
@@ -325,14 +325,14 @@ odoo.define('web_responsive', function (require) {
 
         /* Display the menus that are provided as input.
          */
-        showFoundMenus: function (menus) {
+        showFoundMenus: function(menus) {
             this.searching = true;
             this.$el.find('#appDrawerApps').hide();
             this.$searchAction.hide();
             this.$el.find('.drawer-search-close').show();
             this.$el.find('.drawer-search-open').hide();
             this.$searchResultsContainer
-            // Render the results
+                // Render the results
                 .html(
                     core.qweb.render(
                         'AppDrawerMenuSearchResults',
@@ -353,7 +353,7 @@ odoo.define('web_responsive', function (require) {
 
         /* Close search menu and switch back to app menu.
          */
-        closeSearchMenus: function () {
+        closeSearchMenus: function() {
             this.searching = false;
             this.$el.find('#appDrawerApps').show();
             this.$el.find('.drawer-search-close').hide();
@@ -379,7 +379,7 @@ odoo.define('web_responsive', function (require) {
          *  only of vertical elements.
          * @return jQuery obj for adjacent link
          */
-        findAdjacentLink: function ($link, direction, $objs, restrictHorizontal) {
+        findAdjacentLink: function($link, direction, $objs, restrictHorizontal) {
 
             if ($objs === undefined) {
                 $objs = this.$appLinks;
@@ -388,7 +388,7 @@ odoo.define('web_responsive', function (require) {
             var obj = [];
             var $rows = (restrictHorizontal) ? $objs : this.getRowObjs($link, this.$appLinks);
 
-            switch (direction) {
+            switch(direction){
                 case this.LEFT:
                     obj = $objs[$objs.index($link) - 1];
                     if (!obj) {
@@ -428,16 +428,15 @@ odoo.define('web_responsive', function (require) {
          * @param $grid jQuery objects representing grid
          * @return $objs jQuery objects of row
          */
-        getRowObjs: function ($obj, $grid) {
+        getRowObjs: function($obj, $grid) {
             // Filter by object which middle lies within left/right bounds
             function filterWithin(left, right) {
-                return function () {
+                return function() {
                     var $this = $(this),
                         thisMiddle = $this.offset().left + ($this.width() / 2);
                     return thisMiddle >= left && thisMiddle <= right;
                 };
             }
-
             var left = $obj.offset().left,
                 right = left + $obj.outerWidth();
             return $grid.filter(filterWithin(left, right));
@@ -452,14 +451,14 @@ odoo.define('web_responsive', function (require) {
 
     // if we are in small screen change default view to kanban if exists
     ViewManager.include({
-        get_default_view: function () {
+        get_default_view: function() {
             var default_view = this._super()
             if (config.device.size_class <= config.device.SIZES.XS &&
                 default_view.type != 'kanban' &&
-                this.views['kanban']) {
-                default_view.type = 'kanban';
-            }
-            ;
+                this.views['kanban'])
+                {
+                    default_view.type = 'kanban';
+                };
             return default_view;
         },
     });

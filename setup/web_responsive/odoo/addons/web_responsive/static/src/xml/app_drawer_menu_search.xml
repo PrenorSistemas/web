@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 LasLabs Inc.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+
+<templates xml:space="preserve">
+    <t t-name="AppDrawerMenuSearchResults">
+        <li class="menu-search-element" t-foreach="menus" t-as="menu">
+            <a t-att-id="menu.id"
+               t-attf-href="#action=607&amp;menu_id=469&amp;model=spa.contract&amp;view_type=form&amp;id={{ menu.id }}">
+                <h3 class="text-center">
+                    <t t-esc="menu.contract_partner_name" />, <tiny><t t-esc="menu.contact_id" /></tiny>
+                </h3>
+            </a>
+        </li>
+    </t>
+</templates>
