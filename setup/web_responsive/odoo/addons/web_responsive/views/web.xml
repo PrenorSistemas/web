@@ -220,9 +220,7 @@
                                    />
                                 Apps
                             </a>
-                            <span class="hidden-xs">
-                                &amp;nbsp;|&amp;nbsp;
-                            </span>
+
                             <a class="app-drawer-icon-search drawer-search-open">
                                 <i class="fa fa-lg fa-search"
                                    t-translation="off"
